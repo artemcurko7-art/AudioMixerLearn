@@ -6,6 +6,9 @@ public class SliderSound : Sound
 
     public void ChangeVolume(float volume)
     {
-        Change(_button, volume);
+        MixerGroup.audioMixer.SetFloat(_button, Mathf.Log10(volume) * 20);
+
+        if (volume == 0)
+            MixerGroup.audioMixer.SetFloat(_button, -80);
     }
 }
